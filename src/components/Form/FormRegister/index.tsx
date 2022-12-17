@@ -47,6 +47,7 @@ export const FormRegister = () => {
         register={register("name")}
         disabled={loading}
       />
+      {errors.name && <p>{errors.name.message}</p>}
       <label>Email</label>
       <Input
         id={"email"}
@@ -55,6 +56,7 @@ export const FormRegister = () => {
         register={register("email")}
         disabled={loading}
       />
+      {errors.email && <p>{errors.email.message}</p>}
       <Input
         id={"password"}
         type={"password"}
@@ -62,6 +64,7 @@ export const FormRegister = () => {
         register={register("password")}
         disabled={loading}
       />
+      {errors.password && <p>{errors.password.message}</p>}
       <Input
         id={"confirmPassword"}
         type={"password"}
@@ -69,9 +72,8 @@ export const FormRegister = () => {
         register={register("confirmPassword")}
         disabled={loading}
       />
-      <button type="submit">Login</button>
-      <p>Crie sua conta para saborear muitas delícias e matar sua fome!</p>
-      <button>Cadastrar</button>
+      {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+      <button type="submit">Cadastrar</button>
     </form>
   );
 };

@@ -38,12 +38,43 @@ export interface iUserContext {
     data: iLoginFormValues,
     loading: React.Dispatch<React.SetStateAction<boolean>>
   ) => void;
+  user: iUser | null;
 }
 
 export const LoginProvider = ({ children }: iUserProviderProps) => {
+
   const [user, setUser] = useState<iUser | null>(null);
 
+  const [nowLoading, setNowLoading] = useState(false)
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("@TOKEN");
+    const userID = localStorage.getItem("@USERID");
+
+    (async () => {
+      if (token) {
+        try {
+          setNowLoading(true);
+          const response = await api.get(`/users/${userID}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          setUser(response.data);
+
+          navigate("/home");
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setNowLoading(false);
+        }
+      }
+    })();
+  }, []);
+
 
   const userLogin = async (
     data: iLoginFormValues,
@@ -70,10 +101,20 @@ export const LoginProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
+  const userLogout = () => {
+    localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@USERID");
+
+    setUser(null);
+
+    navigate("/");
+  };
+
   return (
     <LoginContext.Provider
       value={{
         userLogin,
+        user,
       }}
     >
       {children}
