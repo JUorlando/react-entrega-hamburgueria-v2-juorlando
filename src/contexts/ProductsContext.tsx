@@ -41,8 +41,8 @@ export const ProductsProvider = ({ children }: iProductsProviderProps) => {
 
   const showProducts = !filtredProducts
     ? products
-    : products.filter((iten) =>
-        iten.name.toLowerCase().includes(filtredProducts.toLowerCase())
+    : products.filter((iten: iProducts) =>
+        iten.name.toLowerCase().includes(filtredProducts.toLowerCase()) 
       );
 
   useEffect(() => {

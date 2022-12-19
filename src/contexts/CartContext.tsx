@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, SetStateAction, useContext, useState } from "react";
 import React from "react";
 import { ProductsContext } from "./ProductsContext";
 import { toast } from "react-toastify";
@@ -17,6 +17,14 @@ export interface iCartProduct {
   img: string;
 }
 
+interface iOldProducts {
+  category: string;
+  id: number;
+  img: string;
+  name: string;
+  price: number;
+}
+
 export interface iCartContext {
   currentSale: iCartProduct | [];
   setCurrentSale: React.Dispatch<React.SetStateAction<iCartProduct | []>>;
@@ -25,6 +33,7 @@ export interface iCartContext {
   openModal: React.Dispatch<React.SetStateAction<boolean>>;
   closeModal: React.Dispatch<React.SetStateAction<boolean>>;
   modalIsOpen: boolean;
+  count: number;
 }
 
 export const CartProvider = ({ children }: iCartProviderProps) => {
@@ -45,13 +54,16 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
   }
 
   function handleClick(id: number) {
-    const current = products.find((element) => element.id === id);
+    const current = products.find((element: iCartProduct) => element.id === id);
 
     setCurrentSale((oldProducts) => {
-      if (!oldProducts.find((element) => element.id === current.id)) {
+      
+      if (
+        !oldProducts.find((element: iCartProduct) => element.id === current.id)
+      ) {
         return [...oldProducts, current];
       } else {
-        toast.warn("Iten já adicionado ao Carrinho");
+        setCount(count + 1)
 
         return oldProducts;
       }
@@ -59,7 +71,7 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
   }
 
   function removeCard(id: number) {
-    const newList = currentSale.filter((card) => card.id !== id);
+    const newList = currentSale.filter((card: iCartProduct) => card.id !== id);
     setCurrentSale(newList);
   }
 
@@ -73,6 +85,7 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
         openModal,
         closeModal,
         modalIsOpen,
+        count,
       }}
     >
       {children}
