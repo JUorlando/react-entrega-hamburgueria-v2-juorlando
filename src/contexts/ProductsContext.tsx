@@ -46,6 +46,24 @@ export const ProductsProvider = ({ children }: iProductsProviderProps) => {
         iten.name.toLowerCase().includes(filtredProducts.toLowerCase())
       );
 
+  async function getProducts() {
+    if (token) {
+      try {
+        setLoading(true);
+        const response = await api.get("/products", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setProducts(response.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }
+
   useEffect(() => {
     (async () => {
       if (token) {
