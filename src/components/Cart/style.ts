@@ -66,15 +66,15 @@ export const StyledCart = styled.div`
   }
 
   @media (max-width: 1150px) {
-    width: 60%;
+    width: 100%;
   }
 
   @media (max-width: 900px) {
-    width: 70%;
+    width: 100%;
   }
 
   @media (max-width: 600px) {
-    width: 70%;
+    width: 100%;
   }
 
   @media (max-width: 414px) {

@@ -26,18 +26,18 @@ interface iOldProducts {
 }
 
 export interface iCartContext {
-  currentSale: iCartProduct | [];
-  setCurrentSale: React.Dispatch<React.SetStateAction<iCartProduct | []>>;
+  currentSale: iCartProduct[] | [];
+  setCurrentSale: React.Dispatch<React.SetStateAction<iCartProduct[] | []>>;
   handleClick: (id: number) => void;
   removeCard: (id: number) => void;
-  openModal: React.Dispatch<React.SetStateAction<boolean>>;
-  closeModal: React.Dispatch<React.SetStateAction<boolean>>;
+  openModal: () => void;
+  closeModal: () => void;
   modalIsOpen: boolean;
   count: number;
 }
 
 export const CartProvider = ({ children }: iCartProviderProps) => {
-  const [currentSale, setCurrentSale] = useState<iCartProduct | []>([]);
+  const [currentSale, setCurrentSale] = useState<iCartProduct[] | []>([]);
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -56,10 +56,10 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
   function handleClick(id: number) {
     const current = products.find((element: iCartProduct) => element.id === id);
 
-    setCurrentSale((oldProducts) => {
+    setCurrentSale((oldProducts: any) => {
       
       if (
-        !oldProducts.find((element: iCartProduct) => element.id === current.id)
+        !oldProducts.find((element: iCartProduct) => element.id === current?.id)
       ) {
         return [...oldProducts, current];
       } else {

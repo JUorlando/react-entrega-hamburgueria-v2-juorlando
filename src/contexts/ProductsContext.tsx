@@ -25,29 +25,28 @@ export interface iGetProductsResponse {
 }
 
 export interface iProductsContext {
-  products: iProducts | [];
+  products: iProducts[] | [];
   filtredProducts: string;
   setFiltredProducts: React.Dispatch<React.SetStateAction<string>>;
-  showProducts: iProducts | [];
+  showProducts: iProducts[] | [];
 }
 
 export const ProductsProvider = ({ children }: iProductsProviderProps) => {
-
-  const [products, setProducts] = useState<iProducts | []>([]);
+  const [products, setProducts] = useState<iProducts[] | []>([]);
 
   const [filtredProducts, setFiltredProducts] = useState("");
 
   const [loading, setLoading] = useState(false);
 
+  const token = localStorage.getItem("@TOKEN");
+
   const showProducts = !filtredProducts
     ? products
     : products.filter((iten: iProducts) =>
-        iten.name.toLowerCase().includes(filtredProducts.toLowerCase()) 
+        iten.name.toLowerCase().includes(filtredProducts.toLowerCase())
       );
 
   useEffect(() => {
-    const token = localStorage.getItem("@TOKEN");
-
     (async () => {
       if (token) {
         try {
@@ -68,7 +67,9 @@ export const ProductsProvider = ({ children }: iProductsProviderProps) => {
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ products, filtredProducts, setFiltredProducts, showProducts }}>
+    <ProductsContext.Provider
+      value={{ products, filtredProducts, setFiltredProducts, showProducts }}
+    >
       {children}
     </ProductsContext.Provider>
   );

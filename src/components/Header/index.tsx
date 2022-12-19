@@ -12,8 +12,9 @@ export const Header = () => {
 
   const { openModal } = useContext(CartContext);
 
-  const handleSearch = (event) => {
+  const handleSearch = (event: any) => {
     event.preventDefault();
+
     setFiltredProducts(event.target.value);
   };
 

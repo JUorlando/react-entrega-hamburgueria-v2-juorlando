@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
+import { CartContext, iCartProduct } from "../../contexts/CartContext";
 
 interface iElement {
   id: number;
@@ -12,13 +12,9 @@ interface iElement {
 export const CardTotal = () => {
   const { currentSale, setCurrentSale } = useContext(CartContext);
 
-  const somaTotal = currentSale.reduce(
+  const somaTotal = currentSale.reduce<Record<any,any>>(
     (acumulador: number, valorAtual: iElement) => {
-      if (valorAtual.price) {
-        return acumulador + valorAtual.price;
-      } else {
-        return acumulador - valorAtual.price;
-      }
+      return acumulador + valorAtual.price;
     },
     0
   );
