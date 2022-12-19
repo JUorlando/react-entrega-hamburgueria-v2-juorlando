@@ -25,6 +25,7 @@ export const Cart = () => {
   return (
     <Modal
       isOpen={modalIsOpen}
+      onRequestClose={closeModal}
       style={customStyles}
     >
       <StyledCart>
