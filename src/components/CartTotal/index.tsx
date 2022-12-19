@@ -12,7 +12,7 @@ interface iElement {
 export const CardTotal = () => {
   const { currentSale, setCurrentSale } = useContext(CartContext);
 
-  const somaTotal = currentSale.reduce<Record<any,any>>(
+  const somaTotal = currentSale.reduce(
     (acumulador: number, valorAtual: iElement) => {
       return acumulador + valorAtual.price;
     },
