@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { RegisterContext } from "../../../contexts/RegisterContext";
+import { RegisterContext } from "../../../contexts/UserContesxts/RegisterContext";
 import { Input } from "../../Inputs/Inputs";
 import { RegisterSchema } from "./RegisterSchema";
 import { SubmitHandler } from "react-hook-form/dist/types";
+import { StyledForm } from "../FormLogin/style";
 
 export interface iFormRegisterValues {
   name: string;
@@ -32,10 +33,10 @@ export const FormRegister = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
-      <div>
+    <StyledForm onSubmit={handleSubmit(submit)}>
+      <div className="header">
         <h3>Cadastrar</h3>
-        <button>
+        <button className="return">
           <Link to="/">Voltar ao Login</Link>
         </button>
       </div>
@@ -73,7 +74,7 @@ export const FormRegister = () => {
         disabled={loading}
       />
       {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
-      <button type="submit">Cadastrar</button>
-    </form>
+      <button type="submit" className="cadastrar">Cadastrar</button>
+    </StyledForm>
   );
 };

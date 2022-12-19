@@ -2,8 +2,8 @@ import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { iFormRegisterValues } from "../components/Form/FormRegister";
-import { api } from "../services/api";
+import { iFormRegisterValues } from "../../components/Form/FormRegister";
+import { api } from "../../services/api";
 
 export const RegisterContext = createContext({} as iRegisterContext);
 

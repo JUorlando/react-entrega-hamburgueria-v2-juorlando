@@ -1,4 +1,4 @@
-import  {createGlobalStyle}  from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
   :root {
@@ -34,8 +34,8 @@ export const GlobalStyles = createGlobalStyle`
     height: 100vh;
   }
   body {
-    background: var(--color-background);
-    color: var(--color-text);
+    background: var(--color-grey-4);
+    color: var(--color-grey-0);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -46,8 +46,18 @@ export const GlobalStyles = createGlobalStyle`
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 500;
   }
+  a{
+        color: unset;
+        text-decoration: none;
+    }
+  ul, ol, li{
+        list-style: none;
+    }
   button {
     cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--color-grey-0);
   }
   /* width */
   ::-webkit-scrollbar {
@@ -55,17 +65,17 @@ export const GlobalStyles = createGlobalStyle`
   }
   /* Track */
   ::-webkit-scrollbar-track {
-    background: var(--color-text-light);
+    background: var(--color-grey-1);
     margin: 1rem;
     border-radius: 1.6rem;
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: var(--color-primary-dark);
+    background: var(--color-grey-2);
     border-radius: 1.6rem;
   }
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-primary);
+    background: var(--color-grey-4);
   }
 `;

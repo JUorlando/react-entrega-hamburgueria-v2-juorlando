@@ -5,7 +5,8 @@ import { Input } from "../../Inputs/Inputs";
 import { LoginSchema } from "./LoginSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler } from "react-hook-form/dist/types/form";
-import { LoginContext } from "../../../contexts/LoginContexts";
+import { LoginContext } from "../../../contexts/UserContesxts/LoginContexts";
+import { StyledForm } from "./style";
 
 export interface iLoginFormValues {
   email: string;
@@ -30,9 +31,9 @@ export const FormLogin = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <StyledForm onSubmit={handleSubmit(submit)}>
       <h3>Login</h3>
-      <label>Nome</label>
+      <label>Email</label>
       <Input
         type={"email"}
         placeholder={"E-mail"}
@@ -48,11 +49,11 @@ export const FormLogin = () => {
         disabled={loading}
       />
       {errors.password && <p>{errors.password.message}</p>}
-      <button type="submit">Login</button>
+      <button className="login" type="submit">Login</button>
       <p>Crie sua conta para saborear muitas delícias e matar sua fome!</p>
-      <button>
+      <button className="cadastrar" type="button">
         <Link to="/register">Cadastrar</Link>
       </button>
-    </form>
+    </StyledForm>
   );
 };

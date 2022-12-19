@@ -2,8 +2,8 @@ import { createContext, useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { iLoginFormValues } from "../components/Form/FormLogin";
-import { api } from "../services/api";
+import { iLoginFormValues } from "../../components/Form/FormLogin";
+import { api } from "../../services/api";
 
 export const LoginContext = createContext({} as iUserContext);
 
@@ -39,13 +39,13 @@ export interface iUserContext {
     loading: React.Dispatch<React.SetStateAction<boolean>>
   ) => void;
   user: iUser | null;
+  userLogout: () => void;
 }
 
 export const LoginProvider = ({ children }: iUserProviderProps) => {
-
   const [user, setUser] = useState<iUser | null>(null);
 
-  const [nowLoading, setNowLoading] = useState(false)
+  const [nowLoading, setNowLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -74,7 +74,6 @@ export const LoginProvider = ({ children }: iUserProviderProps) => {
       }
     })();
   }, []);
-
 
   const userLogin = async (
     data: iLoginFormValues,
@@ -115,6 +114,7 @@ export const LoginProvider = ({ children }: iUserProviderProps) => {
       value={{
         userLogin,
         user,
+        userLogout,
       }}
     >
       {children}
