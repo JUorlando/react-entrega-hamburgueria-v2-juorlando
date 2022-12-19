@@ -63,8 +63,6 @@ export const ProductsProvider = ({ children }: iProductsProviderProps) => {
       }
     }
   }
-
-  getProducts()
   
   useEffect(() => {
     (async () => {
