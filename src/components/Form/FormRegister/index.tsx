@@ -6,7 +6,7 @@ import { RegisterContext } from "../../../contexts/UserContesxts/RegisterContext
 import { Input } from "../../Inputs/Inputs";
 import { RegisterSchema } from "./RegisterSchema";
 import { SubmitHandler } from "react-hook-form/dist/types";
-import { StyledForm } from "../FormLogin/style";
+import { StyledFormRegister } from "./style";
 
 export interface iFormRegisterValues {
   name: string;
@@ -33,7 +33,7 @@ export const FormRegister = () => {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit(submit)}>
+    <StyledFormRegister onSubmit={handleSubmit(submit)}>
       <div className="header">
         <h3>Cadastrar</h3>
         <button className="return">
@@ -75,6 +75,6 @@ export const FormRegister = () => {
       />
       {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
       <button type="submit" className="cadastrar">Cadastrar</button>
-    </StyledForm>
+    </StyledFormRegister>
   );
 };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledForm = styled.form`
+export const StyledFormRegister = styled.form`
   width: 500px;
   height: 461px;
   display: flex;
@@ -9,7 +9,7 @@ export const StyledForm = styled.form`
   border-radius: 4px;
   gap: 22px;
   padding: 24px;
-  margin-left: 200px;
+  margin-right: 200px;
   margin-top:50px;
 
   h3{
