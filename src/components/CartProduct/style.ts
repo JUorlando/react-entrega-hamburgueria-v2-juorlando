@@ -19,7 +19,7 @@ img{
     flex-direction: column;
 
     .nameButton{
-        width: 90%;
+        width: 100%;
         height: 30px;
         display: flex;
         justify-content: space-between;
@@ -41,6 +41,45 @@ img{
 
     p{
         font-size: small;
+    }
+
+    .calculator{
+        width: 30%;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .remove{
+            width: 20px;
+            height: 22px;
+            color: var(--color-error);
+            border: solid 0.5px var(--color-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .add{
+            width: 20px;
+            height: 22px;
+            color: var(--color-sucess);
+            border: solid 0.5px var(--color-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .number{
+            width: 20px;
+            height: 22px;
+            border: solid 0.5px var(--color-text);
+            background-color: var(--color-background);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
     }
 }
 

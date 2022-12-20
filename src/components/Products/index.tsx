@@ -13,7 +13,7 @@ interface iElement{
 
 export const Products = () => {
   const { showProducts } = useContext(ProductsContext);
-  const { handleClick, openModal } = useContext(CartContext);
+  const { handleAddProducts, openModal, count, setCount } = useContext(CartContext);
   return (
     <>
       {showProducts.map((element: iElement) => (
@@ -26,8 +26,9 @@ export const Products = () => {
           <p className="price">R$ {element.price}</p>
           <button
             onClick={() => {
-              handleClick(element.id);
+              handleAddProducts(element.id);
               openModal();
+              setCount(count + 1)
             }}
           >
             Adicionar

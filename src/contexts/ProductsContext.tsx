@@ -14,6 +14,7 @@ export interface iProducts {
   category: string;
   price: number;
   img: string;
+  count: number;
 }
 
 export interface iGetProductsResponse {
@@ -25,14 +26,14 @@ export interface iGetProductsResponse {
 }
 
 export interface iProductsContext {
-  products: iProducts[] | [];
+  products: iProducts[];
   filtredProducts: string;
   setFiltredProducts: React.Dispatch<React.SetStateAction<string>>;
-  showProducts: iProducts[] | [];
+  showProducts: iProducts[];
 }
 
 export const ProductsProvider = ({ children }: iProductsProviderProps) => {
-  const [products, setProducts] = useState<iProducts[] | []>([]);
+  const [products, setProducts] = useState<iProducts[]>([]);
 
   const [filtredProducts, setFiltredProducts] = useState("");
 

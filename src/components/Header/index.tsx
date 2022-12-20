@@ -10,7 +10,7 @@ export const Header = () => {
 
   const { userLogout } = useContext(LoginContext);
 
-  const { openModal } = useContext(CartContext);
+  const { openModal, count } = useContext(CartContext);
 
   const handleSearch = (event: any) => {
     event.preventDefault();
@@ -34,9 +34,12 @@ export const Header = () => {
           <FiSearch />
         </button>
         <div>
+          <div className="carrinho">
           <button type="button" onClick={openModal}>
             <FiShoppingCart />
           </button>
+          <p className="contador">{count}</p>
+          </div>
           <button type="button" className="logout" onClick={userLogout}>
             <FiLogOut />
           </button>

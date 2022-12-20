@@ -53,6 +53,31 @@ export const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     align-content: center;
+
+    .carrinho {
+      width: 30%;
+      height: 39px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+
+      .contador{
+        width: 18px;
+        height: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-primary);
+        color: var(--color-text-light);
+        font-weight: bold;
+        font-size: smaller;
+        border: solid 1px var(--color-primary);
+        border-radius: 4px;
+        position: relative;
+        bottom: 10px;
+      }
+    }
   }
 
   @media (max-width: 414px) {
