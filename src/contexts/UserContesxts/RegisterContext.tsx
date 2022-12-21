@@ -41,7 +41,6 @@ export interface iRegisterContext {
 }
 
 export const RegisterProvider = ({ children }: iRegisterProviderProps) => {
-
   const navigate = useNavigate();
 
   const registerUser = async (
@@ -52,8 +51,6 @@ export const RegisterProvider = ({ children }: iRegisterProviderProps) => {
       loading(true);
 
       const response = await api.post<iRegisterResponse>("/users", data);
-
-      console.log(response);
 
       toast.success("Usuário cadastrado com sucesso.");
 
