@@ -51,7 +51,7 @@ export const FormLogin = () => {
           placeholder={"Senha"}
           register={register("password")}
           disabled={loading}
-          error={errors.email?.message}
+          error={errors.password?.message}
         />
       <button className="login" type="submit">
         Login
