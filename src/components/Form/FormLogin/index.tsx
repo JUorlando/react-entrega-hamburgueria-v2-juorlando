@@ -32,25 +32,39 @@ export const FormLogin = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit(submit)}>
-      <h3>Login</h3>
-      <label>Email</label>
-      <Input
-        type={"email"}
-        placeholder={"E-mail"}
-        register={register("email")}
-        disabled={loading}
-      />
-      {errors.email && <p>{errors.email.message}</p>}
-      <label>Senha</label>
-      <Input
-        type={"password"}
-        placeholder={"Senha"}
-        register={register("password")}
-        disabled={loading}
-      />
-      {errors.password && <p>{errors.password.message}</p>}
-      <button className="login" type="submit">Login</button>
-      <p>Crie sua conta para saborear muitas delícias e matar sua fome!</p>
+      <div className="title">
+        <h3>Login</h3>
+      </div>
+      <div className="inputsBox">
+        <Input
+          id={"email"}
+          type={"email"}
+          placeholder={"Email"}
+          register={register("email")}
+          disabled={loading}
+        />
+        <label>Email</label>
+        {errors.email && <p className="errorLabel">{errors.email.message}</p>}
+      </div>
+      <div className="inputsBox">
+        <Input
+          id={"name"}
+          type={"text"}
+          placeholder={"Nome"}
+          register={register("password")}
+          disabled={loading}
+        />
+        <label>Senha</label>
+        {errors.password && (
+          <p className="errorLabel">{errors.password.message}</p>
+        )}
+      </div>
+      <button className="login" type="submit">
+        Login
+      </button>
+      <p className="menssage">
+        Crie sua conta para saborear muitas delícias e matar sua fome!
+      </p>
       <button className="cadastrar" type="button">
         <Link to="/register">Cadastrar</Link>
       </button>

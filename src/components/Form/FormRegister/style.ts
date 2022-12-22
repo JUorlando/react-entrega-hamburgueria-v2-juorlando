@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
 export const StyledFormRegister = styled.form`
-  width: 500px;
-  height: 461px;
+  width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   border: solid 1px var(--color-text-complement);
   border-radius: 4px;
-  gap: 22px;
+  gap: 40px;
   padding: 24px;
-  margin-right: 200px;
-  margin-top:50px;
 
   h3{
     font-weight: bold;
@@ -27,17 +25,46 @@ export const StyledFormRegister = styled.form`
     }
   }
 
-  input{
-    width: 452px;
-    height: 60px;
-    border: solid 1px var(--color-text);
-    border-radius: 4px;
+  .inputsBox{
+    width: 100%;
+    height: 38px;
+
+    label{
+      width: 28px;
+      height: 10px;
+      background-color: var(--color-background);
+      color: var(--color-text-in-primary);
+      font-size: 9px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      top: -42px;
+      left: 10px;
+    }
+
+    p{
+      width: 126px;
+      height: 14px;
+      color: var(--color-error);
+      font-size: 9px;
+    }
+
+    .errorLabel{
+      width: 126px;
+      height: 14px;
+      color: var(--color-error);
+      font-size: 9px;
+      position: relative;
+      bottom: 9px;
+    }
 
   }
 
+
   .login{
-    width: 452px;
-    height: 60px;
+    width: 100%;
+    height: 38px;
     background-color: var(--color-primary);
     color: var(--color-text-light);
     border: solid 1px var(--color-primary);
@@ -45,11 +72,29 @@ export const StyledFormRegister = styled.form`
   }
 
   .cadastrar{
-    width: 452px;
-    height: 60px;
-    background-color: var(--color-text-in-primary);
-    color: var(--color-text-light);
-    border: solid 1px var(--color-text-in-primary);
+    width: 100%;
+    height: 38px;
+    background-color: var(--color-text-complement);
+    color: var(--color-text);
+    border: solid 1px var(--color-text-complement);
     border-radius: 4px;
+  }
+
+  @media (max-width: 760px) {
+    height: 60%;
+  }
+
+  @media (max-width: 430px) {
+    .header{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .header{
+      display: flex;
+      flex-direction: column;
+    }
   }
 `

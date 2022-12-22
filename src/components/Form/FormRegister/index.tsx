@@ -40,41 +40,51 @@ export const FormRegister = () => {
           <Link to="/">Voltar ao Login</Link>
         </button>
       </div>
-      <label>Nome</label>
-      <Input
-        id={"name"}
-        type={"text"}
-        placeholder={"Nome"}
-        register={register("name")}
-        disabled={loading}
-      />
-      {errors.name && <p>{errors.name.message}</p>}
-      <label>Email</label>
-      <Input
-        id={"email"}
-        type={"email"}
-        placeholder={"Email"}
-        register={register("email")}
-        disabled={loading}
-      />
-      {errors.email && <p>{errors.email.message}</p>}
-      <Input
-        id={"password"}
-        type={"password"}
-        placeholder={"Senha"}
-        register={register("password")}
-        disabled={loading}
-      />
-      {errors.password && <p>{errors.password.message}</p>}
-      <Input
-        id={"confirmPassword"}
-        type={"password"}
-        placeholder={"Confirmar Senha"}
-        register={register("confirmPassword")}
-        disabled={loading}
-      />
-      {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
-      <button type="submit" className="cadastrar">Cadastrar</button>
+      <div className="inputsBox">
+        <Input
+          id={"name"}
+          type={"text"}
+          placeholder={"Nome"}
+          register={register("name")}
+          disabled={loading}
+        />
+        <label>Nome</label>
+        {errors.name && <p className="errorLabel">{errors.name.message}</p>}
+      </div>
+      <div className="inputsBox">
+        <Input
+          id={"email"}
+          type={"email"}
+          placeholder={"Email"}
+          register={register("email")}
+          disabled={loading}
+        />
+        <label>Email</label>
+        {errors.email && <p className="errorLabel">{errors.email.message}</p>}
+      </div>
+      <div className="inputsBox">
+        <Input
+          id={"password"}
+          type={"password"}
+          placeholder={"Senha"}
+          register={register("password")}
+          disabled={loading}
+        />
+        {errors.password && <p>{errors.password.message}</p>}
+      </div>
+      <div className="inputsBox">
+        <Input
+          id={"confirmPassword"}
+          type={"password"}
+          placeholder={"Confirmar Senha"}
+          register={register("confirmPassword")}
+          disabled={loading}
+        />
+        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+      </div>
+      <button type="submit" className="cadastrar">
+        Cadastrar
+      </button>
     </StyledFormRegister>
   );
 };

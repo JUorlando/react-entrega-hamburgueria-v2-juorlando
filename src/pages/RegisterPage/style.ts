@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledMiniBox = styled.div`
+export const StyledMiniBoxRegister = styled.div`
   width: 50%;
   height: 100%;
   display: flex;
@@ -50,24 +50,14 @@ export const StyledMiniBox = styled.div`
     }
 
   }
-  @media (max-width: 800px) {
-    height: 37px;
-    position: relative;
-    bottom: 445px;
-    .miniBox{
-      display: none;
-    }
-}
   @media (max-width: 760px) {
     height: 37px;
-    position: relative;
-    bottom: 445px;
     .miniBox{
       display: none;
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 380px) {
     height: 37px;
 
     h1{
@@ -80,21 +70,4 @@ export const StyledMiniBox = styled.div`
       display: none;
     }
 }
-`;
-
-export const ContainerPages = styled.div`
-  width: 1000px;
-  height: 461px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-
-  @media (max-width: 800px) {
-    width: 100%;
-    height: 800px;
-    display: flex;
-    flex-direction: column;
-  }
 `;
