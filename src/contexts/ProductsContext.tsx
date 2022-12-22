@@ -1,6 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import React from "react";
 import { api } from "../services/api";
+import { LoginContext } from "./UserContesxts/LoginContexts";
 
 export const ProductsContext = createContext({} as iProductsContext);
 
@@ -27,6 +28,7 @@ export interface iGetProductsResponse {
 
 export interface iProductsContext {
   products: iProducts[];
+  setProducts: React.Dispatch<React.SetStateAction<iProducts[]>>;
   filtredProducts: string;
   setFiltredProducts: React.Dispatch<React.SetStateAction<string>>;
   showProducts: iProducts[];
@@ -37,9 +39,7 @@ export const ProductsProvider = ({ children }: iProductsProviderProps) => {
 
   const [filtredProducts, setFiltredProducts] = useState("");
 
-  const [loading, setLoading] = useState(false);
-
-  const token = localStorage.getItem("@TOKEN");
+  const {loading, setLoading} = useContext(LoginContext)
 
   const showProducts = !filtredProducts
     ? products
@@ -47,29 +47,11 @@ export const ProductsProvider = ({ children }: iProductsProviderProps) => {
         iten.name.toLowerCase().includes(filtredProducts.toLowerCase())
       );
 
-  async function getProducts() {
-    if (token) {
-      try {
-        setLoading(true);
-        const response = await api.get("/products", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setProducts(response.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-  }
-  
   useEffect(() => {
     (async () => {
+      const token = localStorage.getItem("@TOKEN");
       if (token) {
         try {
-          setLoading(true);
           const response = await api.get("/products", {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -81,13 +63,22 @@ export const ProductsProvider = ({ children }: iProductsProviderProps) => {
         } finally {
           setLoading(false);
         }
+      } else {
+        setProducts([])
+        setLoading(false)
       }
     })();
-  }, []);
+  }, [loading]);
 
   return (
     <ProductsContext.Provider
-      value={{ products, filtredProducts, setFiltredProducts, showProducts }}
+      value={{
+        products,
+        setProducts,
+        filtredProducts,
+        setFiltredProducts,
+        showProducts,
+      }}
     >
       {children}
     </ProductsContext.Provider>

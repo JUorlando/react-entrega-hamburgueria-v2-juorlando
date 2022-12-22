@@ -55,6 +55,19 @@ export const StyledCart = styled.div`
       }
     }
 
+    .emptyCart {
+      width: 100%;
+      height: 100%;
+      color: var(--color-text-in-primary);
+      h1 {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        text-align: center;
+        font-size: large;
+      }
+    }
+
     button {
       width: 100%;
       height: 60px;

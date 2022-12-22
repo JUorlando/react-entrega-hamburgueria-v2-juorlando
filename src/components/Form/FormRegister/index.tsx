@@ -40,48 +40,40 @@ export const FormRegister = () => {
           <Link to="/">Voltar ao Login</Link>
         </button>
       </div>
-      <div className="inputsBox">
         <Input
           id={"name"}
           type={"text"}
+          name={"Nome"}
           placeholder={"Nome"}
           register={register("name")}
           disabled={loading}
+          error={errors.name?.message}
         />
-        <label>Nome</label>
-        {errors.name && <p className="errorLabel">{errors.name.message}</p>}
-      </div>
-      <div className="inputsBox">
         <Input
           id={"email"}
           type={"email"}
+          name={"Email"}
           placeholder={"Email"}
           register={register("email")}
           disabled={loading}
+          error={errors.email?.message}
         />
-        <label>Email</label>
-        {errors.email && <p className="errorLabel">{errors.email.message}</p>}
-      </div>
-      <div className="inputsBox">
         <Input
           id={"password"}
           type={"password"}
           placeholder={"Senha"}
           register={register("password")}
           disabled={loading}
+          error={errors.password?.message}
         />
-        {errors.password && <p>{errors.password.message}</p>}
-      </div>
-      <div className="inputsBox">
         <Input
           id={"confirmPassword"}
           type={"password"}
           placeholder={"Confirmar Senha"}
           register={register("confirmPassword")}
           disabled={loading}
+          error={errors.confirmPassword?.message}
         />
-        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
-      </div>
       <button type="submit" className="cadastrar">
         Cadastrar
       </button>

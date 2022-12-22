@@ -22,7 +22,7 @@ const customStyles = {
 };
 
 export const Cart = () => {
-  const { modalIsOpen, closeModal } = useContext(CartContext);
+  const { modalIsOpen, closeModal, currentSale } = useContext(CartContext);
 
   return (
     <Modal
@@ -37,11 +37,12 @@ export const Cart = () => {
             X
           </button>
         </div>
+
         <ul>
           <CartProduct />
         </ul>
         <div className="total">
-          <CardTotal />
+          {currentSale.length ? <CardTotal /> : <div className="emptyCart"><h1>Não existem produtos no carrinho!</h1></div>}
         </div>
       </StyledCart>
     </Modal>

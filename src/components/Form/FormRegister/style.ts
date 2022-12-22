@@ -25,43 +25,6 @@ export const StyledFormRegister = styled.form`
     }
   }
 
-  .inputsBox{
-    width: 100%;
-    height: 38px;
-
-    label{
-      width: 28px;
-      height: 10px;
-      background-color: var(--color-background);
-      color: var(--color-text-in-primary);
-      font-size: 9px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      top: -42px;
-      left: 10px;
-    }
-
-    p{
-      width: 126px;
-      height: 14px;
-      color: var(--color-error);
-      font-size: 9px;
-    }
-
-    .errorLabel{
-      width: 126px;
-      height: 14px;
-      color: var(--color-error);
-      font-size: 9px;
-      position: relative;
-      bottom: 9px;
-    }
-
-  }
-
-
   .login{
     width: 100%;
     height: 38px;

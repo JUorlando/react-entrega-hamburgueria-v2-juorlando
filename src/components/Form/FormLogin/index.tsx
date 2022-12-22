@@ -35,30 +35,24 @@ export const FormLogin = () => {
       <div className="title">
         <h3>Login</h3>
       </div>
-      <div className="inputsBox">
         <Input
           id={"email"}
           type={"email"}
+          name={"Email"}
           placeholder={"Email"}
           register={register("email")}
           disabled={loading}
+          error={errors.email?.message}
         />
-        <label>Email</label>
-        {errors.email && <p className="errorLabel">{errors.email.message}</p>}
-      </div>
-      <div className="inputsBox">
         <Input
-          id={"name"}
-          type={"text"}
-          placeholder={"Nome"}
+          id={"password"}
+          type={"password"}
+          name={"Senha"}
+          placeholder={"Senha"}
           register={register("password")}
           disabled={loading}
+          error={errors.email?.message}
         />
-        <label>Senha</label>
-        {errors.password && (
-          <p className="errorLabel">{errors.password.message}</p>
-        )}
-      </div>
       <button className="login" type="submit">
         Login
       </button>

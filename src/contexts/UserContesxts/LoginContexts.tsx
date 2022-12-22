@@ -1,9 +1,10 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { iLoginFormValues } from "../../components/Form/FormLogin";
 import { api } from "../../services/api";
+import { ProductsContext } from "../ProductsContext";
 
 export const LoginContext = createContext({} as iUserContext);
 
@@ -40,12 +41,14 @@ export interface iUserContext {
   ) => void;
   user: iUser | null;
   userLogout: () => void;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const LoginProvider = ({ children }: iUserProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
 
-  const [nowLoading, setNowLoading] = useState(false);
+  const [loading, setLoading] = useState(true)
 
   const navigate = useNavigate();
 
@@ -56,7 +59,7 @@ export const LoginProvider = ({ children }: iUserProviderProps) => {
     (async () => {
       if (token) {
         try {
-          setNowLoading(true);
+
           const response = await api.get(`/users/${userID}`, {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -69,7 +72,7 @@ export const LoginProvider = ({ children }: iUserProviderProps) => {
         } catch (error) {
           console.log(error);
         } finally {
-          setNowLoading(false);
+          setLoading(true);
         }
       }
     })();
@@ -80,7 +83,7 @@ export const LoginProvider = ({ children }: iUserProviderProps) => {
     loading: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
     try {
-      loading(true);
+      loading(true)
 
       const response = await api.post<iLoginResponse>("/login", data);
 
@@ -89,14 +92,15 @@ export const LoginProvider = ({ children }: iUserProviderProps) => {
       localStorage.setItem("@USERID", JSON.stringify(response.data.user.id));
 
       toast.success("Login realizado com sucesso.");
-
+      
       setUser(response.data);
 
       navigate("/home");
     } catch (error) {
       toast.error("Ops! Algo deu errado");
     } finally {
-      loading(false);
+      loading(false)
+      setLoading(true);
     }
   };
 
@@ -115,6 +119,8 @@ export const LoginProvider = ({ children }: iUserProviderProps) => {
         userLogin,
         user,
         userLogout,
+        loading,
+        setLoading,
       }}
     >
       {children}
