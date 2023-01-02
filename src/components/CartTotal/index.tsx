@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 import { CartContext } from "../../contexts/CartContext";
 
 export const CardTotal = () => {
@@ -22,6 +23,7 @@ export const CardTotal = () => {
           onClick={() => {
             setCurrentSale([]);
             setCount(0);
+            toast.error("Produtos removidos!")
           }}
         >
           Remover Todos

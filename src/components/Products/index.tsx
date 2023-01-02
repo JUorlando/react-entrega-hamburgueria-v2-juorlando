@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 import { CartContext } from "../../contexts/CartContext";
 import { ProductsContext } from "../../contexts/ProductsContext";
 import { StyledProducts } from "./styles";
@@ -27,7 +28,8 @@ export const Products = () => {
           <button
             onClick={() => {
               handleAddProducts(element.id);
-              openModal();
+              // openModal();
+              toast.success("Produto adicionado ao carrinho!")
               setCount(count + 1)
             }}
           >

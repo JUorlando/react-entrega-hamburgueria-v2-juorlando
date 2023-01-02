@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import React from "react";
 import { ProductsContext } from "./ProductsContext";
+import { toast } from "react-toastify";
 
 export const CartContext = createContext({} as iCartContext);
 
